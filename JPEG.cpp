@@ -29,9 +29,8 @@ static const int ZigZagArray[64] =
     35,  36, 48,  49,  57,  58,  62,  63,
 };
 
-JPEG::JPEG(const uint8_t *data, uint32_t len) {
+JPEG::JPEG(const uint8_t *data) {
     _data = data;
-    _len = len;
     _nbits_in_reservoir = 0;
     _reservoir = 0;
 }
@@ -79,7 +78,7 @@ void JPEG::buildQuantizationTable(float *qtable, const uint8_t *ref_table) {
 
 bool JPEG::parseDQT(const uint8_t *stream) {
     int length, qi;
-    float *table;
+//    float *table;
 
     length = BYTE_TO_WORD(stream) - 2;
     stream += 2;    // Skip length
@@ -147,7 +146,7 @@ void JPEG::genHuffCodes(int num_codes, stBlock* arr, uint8_t *huffVal ) {
     }
 }
 
-void JPEG::buildHuffmanTable(const uint8_t *bits, const uint8_t *stream, stHuffmanTable *HT) {
+void JPEG::buildHuffmanTable(const uint8_t *bits, const uint8_t __attribute__((unused)) *stream, stHuffmanTable *HT) {
     for (int j=1; j<=16; j++) {
         HT->m_length[j] = bits[j];
     }
@@ -302,19 +301,18 @@ bool JPEG::parseHeader() {
     }
 
     const uint8_t *startStream = _data+2;
-    const int fileSize = _len - 2;
     return parseJFIF(startStream);
 }
 
-void JPEG::draw(DisplayCore *dev, int x, int y, color_t t) {
+void JPEG::draw(DisplayCore *dev, int x, int y, color_t __attribute__((unused)) t) {
     draw(dev, x, y);
 }
 
-void JPEG::drawTransformed(DisplayCore *dev, int x, int y, int transform) {
+void JPEG::drawTransformed(DisplayCore *dev, int x, int y, int __attribute__((unused)) transform) {
     draw(dev, x, y);
 }
 
-void JPEG::drawTransformed(DisplayCore *dev, int x, int y, int transform, color_t t) {
+void JPEG::drawTransformed(DisplayCore *dev, int x, int y, int __attribute__((unused)) transform, color_t __attribute__((unused)) t) {
     draw(dev, x, y);
 }
 
@@ -595,7 +593,7 @@ color_t JPEG::convertYCrCbto565(int y, int cb, int cr) {
     return rgb(r, g, b);
 }
 
-void JPEG::draw(DisplayCore *dev, int px, int py) {
+void JPEG::draw(DisplayCore *dev, int __attribute__((unused)) px, int __attribute__((unused)) py) {
     if (!parseHeader()) {
         return;
     }
@@ -611,8 +609,8 @@ void JPEG::draw(DisplayCore *dev, int px, int py) {
     int xstride_by_mcu = hFactor * 8;
     int ystride_by_mcu = vFactor * 8;
 
-    unsigned int bytes_per_blocklines = _width * 3 * ystride_by_mcu;
-    unsigned int bytes_per_mcu = xstride_by_mcu * 3;
+//    unsigned int bytes_per_blocklines = _width * 3 * ystride_by_mcu;
+//    unsigned int bytes_per_mcu = xstride_by_mcu * 3;
 
 //    uint8_t colorspace[ystride_by_mcu * xstride_by_mcu];
 

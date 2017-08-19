@@ -33,7 +33,6 @@ class JPEG : public Image {
     private:
         const uint8_t *_data;
         const uint8_t *_stream;
-        uint32_t _len;
 
         stComponent _componentInfo[COMPONENTS];
         float _qTables[COMPONENTS][64];
@@ -45,7 +44,7 @@ class JPEG : public Image {
         uint8_t _Cb[64*4];
 
         uint32_t _reservoir;
-        uint32_t _nbits_in_reservoir;
+        int _nbits_in_reservoir;
 
         bool parseHeader();
         void buildQuantizationTable(float *, const uint8_t *);
@@ -72,8 +71,6 @@ class JPEG : public Image {
 
         void decodeMCU(int, int);
 
-
-
         bool parseJFIF(const uint8_t *);
         bool parseSOF(const uint8_t *);
         bool parseDQT(const uint8_t *);
@@ -81,7 +78,7 @@ class JPEG : public Image {
         bool parseSOS(const uint8_t *);
 
     public:
-        JPEG(const uint8_t *data, uint32_t len);
+        JPEG(const uint8_t *data);
         void draw(DisplayCore *dev, int x, int y);
         void draw(DisplayCore *dev, int x, int y, color_t t);
         void drawTransformed(DisplayCore *dev, int x, int y, int transform);
