@@ -1,0 +1,19 @@
+Source: libdisplaycore-image-jpeg
+Section: libraries
+Priority: extra
+Maintainer: Matt Jenkins <matt@majenko.co.uk>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+
+Package: libdisplaycore-image-jpeg
+Section: libraries
+Architecture: all
+XBSC-Group: DisplayCore
+XBSC-Subgroup: Image
+Depends: libdisplaycore-core
+Provides: JPEG.h
+Description: JPEG library
+ Load and display (albeit slowly and with some restrictions) JPEG files from memory
+
+
+
