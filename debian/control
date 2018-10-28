@@ -12,7 +12,7 @@ XBSC-Group: DisplayCore
 XBSC-Subgroup: Image
 Depends: libdisplaycore-core
 Provides: JPEG.h
-Description: JPEG library
+Description: JPEG
  Load and display (albeit slowly and with some restrictions) JPEG files from memory
 
 
