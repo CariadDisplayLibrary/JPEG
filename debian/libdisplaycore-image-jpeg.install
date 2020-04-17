@@ -1,3 +1,4 @@
-JPEG.cpp libraries/DisplayCore/JPEG
-JPEG.h libraries/DisplayCore/JPEG
-examples/ libraries/DisplayCore/JPEG
+examples libraries/DisplayCore/JPEG
+library.json libraries/DisplayCore/JPEG
+library.properties libraries/DisplayCore/JPEG
+src libraries/DisplayCore/JPEG
