@@ -304,15 +304,15 @@ bool JPEG::parseHeader() {
     return parseJFIF(startStream);
 }
 
-void JPEG::draw(DisplayCore *dev, int x, int y, color_t __attribute__((unused)) t) {
+void JPEG::draw(Cariad *dev, int x, int y, color_t __attribute__((unused)) t) {
     draw(dev, x, y);
 }
 
-void JPEG::drawTransformed(DisplayCore *dev, int x, int y, int __attribute__((unused)) transform) {
+void JPEG::drawTransformed(Cariad *dev, int x, int y, int __attribute__((unused)) transform) {
     draw(dev, x, y);
 }
 
-void JPEG::drawTransformed(DisplayCore *dev, int x, int y, int __attribute__((unused)) transform, color_t __attribute__((unused)) t) {
+void JPEG::drawTransformed(Cariad *dev, int x, int y, int __attribute__((unused)) transform, color_t __attribute__((unused)) t) {
     draw(dev, x, y);
 }
 
@@ -593,7 +593,7 @@ color_t JPEG::convertYCrCbto565(int y, int cb, int cr) {
     return rgb(r, g, b);
 }
 
-void JPEG::draw(DisplayCore *dev, int __attribute__((unused)) px, int __attribute__((unused)) py) {
+void JPEG::draw(Cariad *dev, int __attribute__((unused)) px, int __attribute__((unused)) py) {
     if (!parseHeader()) {
         return;
     }

@@ -1,7 +1,7 @@
 #ifndef _JPEG_H
 #define _JPEG_H
 
-#include <DisplayCore.h>
+#include <Cariad.h>
 
 #define HUFFMAN_TABLES        4
 #define COMPONENTS            4
@@ -79,10 +79,10 @@ class JPEG : public Image {
 
     public:
         JPEG(const uint8_t *data);
-        void draw(DisplayCore *dev, int x, int y);
-        void draw(DisplayCore *dev, int x, int y, color_t t);
-        void drawTransformed(DisplayCore *dev, int x, int y, int transform);
-        void drawTransformed(DisplayCore *dev, int x, int y, int transform, color_t t);
+        void draw(Cariad *dev, int x, int y);
+        void draw(Cariad *dev, int x, int y, color_t t);
+        void drawTransformed(Cariad *dev, int x, int y, int transform);
+        void drawTransformed(Cariad *dev, int x, int y, int transform, color_t t);
 };
 
 #endif
